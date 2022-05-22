@@ -24,6 +24,7 @@ const Detail = () => {
         small_cover_image
         medium_cover_image
         large_cover_image
+        isLiked @client
       } 
       suggestions(id: $id) {
         id
@@ -36,13 +37,12 @@ const Detail = () => {
 
   const { loading, error, data } = useQuery(GET_DATA, { variables: { id: +id }});
   
-  console.log(data);
 
   return (
     <Container>
       <Btn onClick={goBackHandler}>Back</Btn>
       <Column>
-        <Title>{loading ? <Loading/> : data.realMovie.title}</Title>
+        <Title>{loading ? <Loading/> : `${data.realMovie.title} ${data.realMovie.isLiked ? '❤️' : '👅'}`}</Title>
         {
           !loading && data.realMovie && (
             <>

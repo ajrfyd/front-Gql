@@ -19,6 +19,7 @@ const GET_DATAS = gql`
       small_cover_image
       medium_cover_image
       large_cover_image
+      isLiked @client
     }
   }
 `
@@ -46,7 +47,7 @@ const Home = () => {
       } */}
       <Movies>
         {
-          data?.realAllMovies?.map(m => <Movie key={m.id} id={m.id} medium_cover_image={m.medium_cover_image}/>)
+          data?.realAllMovies?.map(m => <Movie key={m.id} id={m.id} medium_cover_image={m.medium_cover_image} isLiked={m.isLiked}/>)
         }
       </Movies>
     </Container>
